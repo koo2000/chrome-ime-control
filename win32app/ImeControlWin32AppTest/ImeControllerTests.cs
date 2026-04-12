@@ -2,11 +2,9 @@
 namespace Tests
 {
 
-
     using ImeControl;
 
-
-    public class Tests
+    public class ImeControllerTests
     {
 
 

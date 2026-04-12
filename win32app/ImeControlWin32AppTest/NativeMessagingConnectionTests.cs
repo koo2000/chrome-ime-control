@@ -1,4 +1,4 @@
-﻿namespace Test
+﻿namespace Tests
 
 {
     using System.Security.Cryptography.X509Certificates;
@@ -7,7 +7,7 @@
     using NUnit.Framework.Interfaces;
 
 
-    public class Tests
+    public class NativeMessagingConnectionTests
     {
         [SetUp]
         public void Setup()
