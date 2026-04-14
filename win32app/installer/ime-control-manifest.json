@@ -1,0 +1,7 @@
+{
+  "name": "com.github.koo2000.imechange",
+  "description": "change ime control extension for Windows",
+  "path": "C:\\work\\git\\chrome-ime-control\\win32app\\ImeControlWin32App\\bin\\Debug\\net10.0\\ImeControlWin32App.exe",
+  "type": "stdio",
+  "allowed_origins": ["chrome-extension://cdjaikpcbalfjbdjkfegclajkilbaimc/"]
+}

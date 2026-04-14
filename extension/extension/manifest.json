@@ -1,0 +1,23 @@
+{
+    "name": "ime-control",
+    "manifest_version": 3,
+    "version": "0.1",
+    "permissions": [
+        "tabs",
+        "nativeMessaging"
+    ],
+    "content_scripts": [
+        {
+            "all_frames": true,
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "contents.js"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}

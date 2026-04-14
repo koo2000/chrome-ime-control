@@ -16,13 +16,13 @@ namespace Tests
         [Test]
         public void integrationTestImeOn()
         {
-            sendMessageWithListener(ImeControllListener.ImeOnMessage);
+            sendMessageWithListener("\"ime-mode\" : \"on\"");
         }
 
         [Test]
         public void integrationTestImeOff()
         {
-            sendMessageWithListener(ImeControllListener.ImeOffMessage);
+            sendMessageWithListener("\"ime-mode\" : \"off\"");
         }
 
         private static void sendMessageWithListener(string message)

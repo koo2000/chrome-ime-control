@@ -1,3 +1,4 @@
+using System.Text.Json;
 using ImeControl;
 using NativeMessaging;
 using NLog;
@@ -10,20 +11,22 @@ namespace NativeImeControl
 
         private ImeController controller;
 
-        public static readonly String ImeOnMessage = "ime on";
-        public static readonly String ImeOffMessage = "ime off";
-
         public ImeControllListener(String targetProcess)
         {
             controller = new ImeController(targetProcess);
         }
         public void messageReceived(string message)
         {
-            if (ImeOnMessage.Equals(message))
+            log.Info("message received [" + message + "]");
+            
+            var doc = JsonDocument.Parse(message);
+            var ime = doc.RootElement.TryGetProperty("ime-mode", out JsonElement imeMode);
+
+            if ("on".Equals(imeMode.ToString()))
             {
                 controller.setImeActiveStatus(true);
             }
-            else if (ImeOffMessage.Equals(message))
+            else if ("off".Equals(imeMode.ToString()))
             {
                 controller.setImeActiveStatus(false);
             }

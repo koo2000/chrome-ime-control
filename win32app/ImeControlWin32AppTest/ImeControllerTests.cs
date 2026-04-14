@@ -9,7 +9,7 @@ namespace Tests
 
 
         [Test]
-        public void testImeOff()
+        public void testImeOffEdge()
         {
             ImeController controller = new ImeController("msedge");
 
@@ -18,7 +18,7 @@ namespace Tests
         }
 
         [Test]
-        public void testImeOn()
+        public void testImeOnEdge()
         {
             ImeController controller = new ImeController("msedge");
 
@@ -26,5 +26,22 @@ namespace Tests
 
         }
 
+        [Test]
+        public void testImeOffChrome()
+        {
+            ImeController controller = new ImeController("chrome");
+
+            controller.setImeActiveStatus(false);
+
+        }
+
+        [Test]
+        public void testImeOnChrome()
+        {
+            ImeController controller = new ImeController("chrome");
+
+            controller.setImeActiveStatus(true);
+
+        }
     }
 }

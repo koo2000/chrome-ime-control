@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
+using NLog;
 
 
 namespace ImeControl
@@ -11,6 +12,7 @@ namespace ImeControl
     public class ImeController
     {
 
+        private Logger log = LogManager.GetCurrentClassLogger();
         private String processName;
 
         public ImeController(String processName)
@@ -32,13 +34,12 @@ namespace ImeControl
             var processes = Process.GetProcessesByName(processName);
             IntPtr target_hwnd = IntPtr.Zero;
 
-            Console.Out.WriteLine("process Length =" + processes.Length);
             foreach (Process p in processes)
             {
                 IntPtr mainWindowHandle = p.MainWindowHandle;
                 if (mainWindowHandle != 0)
                 {
-                    Console.Out.WriteLine("p = " + p.ProcessName);
+                    log.Debug("process [" + processName + "] found. pid = " + p.Id + "]");
                     IntPtr imeHandle = ImmGetDefaultIMEWnd(mainWindowHandle);
                     SendMessage(imeHandle, IME_CONTROL, IME_SETOPENSTATUS, imemode ? 1 : 0);
                     break;
