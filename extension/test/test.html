@@ -1,0 +1,33 @@
+<html>
+<head>
+    <script >
+
+    </script>
+
+</head>
+<input type="text" data-imemode="on"> <br>
+<input type="text" data-imemode="off"> <br>
+
+<footer>
+    <script >
+        document
+            .querySelectorAll('input')
+            .forEach(e => {
+                var imemode = e.dataset['imemode']
+                if (imemode === "on") {
+                    e.addEventListener("focus", (e) => {
+                        console.log("test.html: ime mode on");
+                        var event = new CustomEvent("imeOn");
+                        window.dispatchEvent(event);
+                    });
+                } else if (imemode === "off") {
+                    e.addEventListener("focus", (e) => {
+                        console.log("test.html: ime mode off");
+                        var event = new CustomEvent("imeOff");
+                        window.dispatchEvent(event);
+                    });
+                }
+            });
+</script>
+</footer>
+</html>
