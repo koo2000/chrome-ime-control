@@ -15,9 +15,9 @@ port.onDisconnect.addListener(() => {
 // 画面からメッセージを受け取ってネイティブに渡す
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if ("imeOn" === message) {
-    port.postMessage({ "ime-mode": "on" });
+    port.postMessage({ "imemode": "on" });
   } else if ("imeOff" === message) {
-    port.postMessage({ "ime-mode": "off" });
+    port.postMessage({ "imemode": "off" });
   }
   sendResponse("request processed");
 });

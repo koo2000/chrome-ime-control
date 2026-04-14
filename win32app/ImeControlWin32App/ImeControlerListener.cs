@@ -5,13 +5,13 @@ using NLog;
 
 namespace NativeImeControl
 {
-    public class ImeControllListener : INativeMessagingEventListener
+    public class ImeControlerListener : INativeMessagingEventListener
     {
         private Logger log = LogManager.GetCurrentClassLogger();
 
         private ImeController controller;
 
-        public ImeControllListener(String targetProcess)
+        public ImeControlerListener(String targetProcess)
         {
             controller = new ImeController(targetProcess);
         }
@@ -20,15 +20,16 @@ namespace NativeImeControl
             log.Info("message received [" + message + "]");
             
             var doc = JsonDocument.Parse(message);
-            var ime = doc.RootElement.TryGetProperty("ime-mode", out JsonElement imeMode);
+            doc.RootElement.TryGetProperty("imemode", out JsonElement imeMode);
+            doc.RootElement.TryGetProperty("processName", out JsonElement processName);
 
             if ("on".Equals(imeMode.ToString()))
             {
-                controller.setImeActiveStatus(true);
+                controller.setImeActiveStatus(processName.ToString(), true);
             }
             else if ("off".Equals(imeMode.ToString()))
             {
-                controller.setImeActiveStatus(false);
+                controller.setImeActiveStatus(processName.ToString(), false);
             }
             else
             {
