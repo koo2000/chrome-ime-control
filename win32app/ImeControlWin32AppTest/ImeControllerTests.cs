@@ -11,36 +11,36 @@ namespace Tests
         [Test]
         public void testImeOffEdge()
         {
-            ImeController controller = new ImeController("msedge");
+            ImeController controller = new ImeController();
 
-            controller.setImeActiveStatus(false);
+            controller.setImeActiveStatus("msedge", false);
 
         }
 
         [Test]
         public void testImeOnEdge()
         {
-            ImeController controller = new ImeController("msedge");
+            ImeController controller = new ImeController();
 
-            controller.setImeActiveStatus(true);
+            controller.setImeActiveStatus("msedge", true);
 
         }
 
         [Test]
         public void testImeOffChrome()
         {
-            ImeController controller = new ImeController("chrome");
+            ImeController controller = new ImeController();
 
-            controller.setImeActiveStatus(false);
+            controller.setImeActiveStatus("chrome", false);
 
         }
 
         [Test]
         public void testImeOnChrome()
         {
-            ImeController controller = new ImeController("chrome");
+            ImeController controller = new ImeController();
 
-            controller.setImeActiveStatus(true);
+            controller.setImeActiveStatus("chrome", true);
 
         }
     }

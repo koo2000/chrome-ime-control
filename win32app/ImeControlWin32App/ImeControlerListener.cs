@@ -9,27 +9,38 @@ namespace NativeImeControl
     {
         private Logger log = LogManager.GetCurrentClassLogger();
 
-        private ImeController controller;
+        private ImeController controller = new ImeController();
 
-        public ImeControlerListener(String targetProcess)
-        {
-            controller = new ImeController(targetProcess);
-        }
         public void messageReceived(string message)
         {
             log.Info("message received [" + message + "]");
             
             var doc = JsonDocument.Parse(message);
             doc.RootElement.TryGetProperty("imemode", out JsonElement imeMode);
-            doc.RootElement.TryGetProperty("processName", out JsonElement processName);
+            doc.RootElement.TryGetProperty("agent", out JsonElement agent);
+
+            String processName;
+
+            if (agent.ToString().Contains("Edg"))
+            {
+                processName = "msedge";
+            } else if (agent.ToString().Contains("Chrome"))
+            {
+                processName = "chrome";
+            } else
+            {
+                log.Info("unknown agent name. skip message[" + message + "].");
+                return;
+            }
+
 
             if ("on".Equals(imeMode.ToString()))
             {
-                controller.setImeActiveStatus(processName.ToString(), true);
+                controller.setImeActiveStatus(processName, true);
             }
             else if ("off".Equals(imeMode.ToString()))
             {
-                controller.setImeActiveStatus(processName.ToString(), false);
+                controller.setImeActiveStatus(processName, false);
             }
             else
             {

@@ -13,13 +13,6 @@ namespace ImeControl
     {
 
         private Logger log = LogManager.GetCurrentClassLogger();
-        private String processName;
-
-        public ImeController(String processName)
-        {
-            this.processName = processName;
-        }
-
         [DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
 
@@ -29,7 +22,7 @@ namespace ImeControl
         private const uint IME_CONTROL = 0x0283;
         private const int IME_SETOPENSTATUS = 0x0006;
         
-        public void setImeActiveStatus(Boolean imemode)
+        public void setImeActiveStatus(String processName, Boolean imemode)
         {
             var processes = Process.GetProcessesByName(processName);
             IntPtr target_hwnd = IntPtr.Zero;

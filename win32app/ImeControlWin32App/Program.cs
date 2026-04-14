@@ -10,7 +10,7 @@ Logger log = LogManager.GetCurrentClassLogger();
 log.Info("start NativeMessagingConnection");
 
 NativeMessagingConnection connection = new NativeMessagingConnection(Console.OpenStandardInput(), Console.OpenStandardOutput());
-connection.AddListener(new ImeControlerListener("chrome"));
+connection.AddListener(new ImeControlerListener());
 connection.startRead();
 
 while(true)

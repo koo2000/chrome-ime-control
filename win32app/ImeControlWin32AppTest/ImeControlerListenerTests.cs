@@ -27,11 +27,11 @@ namespace Tests
 
         private static void sendMessageWithListener(string message)
         {
-            ImeControlerListener listener = new ImeControlerListener("msedge");
+            ImeControlerListener listener = new ImeControlerListener();
 
 
             NativeMessagingConnection connection = new NativeMessagingConnection(Console.OpenStandardInput(), Console.OpenStandardOutput());
-            connection.AddListener(new ImeControlerListener("msedge"));
+            connection.AddListener(new ImeControlerListener());
             connection.startRead();
 
 
