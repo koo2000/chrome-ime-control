@@ -1,3 +1,3 @@
 Windows Registry Editor Version 5.00
-[HKEY_CURRENT_USER\Software\Google\Chrome\NativeMessagingHosts\com.github.koo2000.imechange]
-@="C:\\work\\git\\chrome-ime-control\\win32app\\installer\\ime-control-manifest.json"
+[HKEY_CURRENT_USER\Software\Google\Chrome\NativeMessagingHosts\com.github.koo2000.imecontrol]
+@="C:\\work\\git\\chrome-ime-control\\nativeapp\\installer\\ime-control-manifest.json"

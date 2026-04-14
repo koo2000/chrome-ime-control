@@ -16,7 +16,7 @@ namespace Tests
         [Test]
         public void integrationTestImeOn()
         {
-            sendMessageWithListener("\"ime-mode\" : \"on\"");
+            sendMessageWithListener("\"ime-mode\" : \"on\", \"agent\" : \"\"");
         }
 
         [Test]

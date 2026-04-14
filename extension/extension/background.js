@@ -3,7 +3,7 @@ console.log(agent);
 
 
 // ポートを開ける
-var port = chrome.runtime.connectNative("com.github.koo2000.imechange");
+var port = chrome.runtime.connectNative("com.github.koo2000.imecontrol");
 
 port.onMessage.addListener((msg) => {
   // TODO 戻りメッセージの処理（あれば）

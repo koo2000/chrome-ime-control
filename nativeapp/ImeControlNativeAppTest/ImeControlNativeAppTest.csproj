@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ImeControlWin32App\ImeControlWin32App.csproj" />
+    <ProjectReference Include="..\ImeControlNativeApp\ImeControlNativeApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
