@@ -12,8 +12,8 @@ namespace NativeImeControl
 
         private ImeController controller = new ImeController();
 
-        public const String ImemodeOn = "on";
-        public const String ImemodeOff = "off";
+        public const String ImemodeOn = "imeOn";
+        public const String ImemodeOff = "imeOff";
         public const String ImemodeHiragana = "hiragana";
         public const String ImemodeFullKatakana = "katakana";
         public const String ImemodeHalfwidthKatakana = "hankakukana";
@@ -45,17 +45,17 @@ namespace NativeImeControl
             }
 
 
-            if ("true".Equals(imeOn.ToString()))
+            if ("true".Equals(imeOn.ToString()) || "on".Equals(imeOn.ToString()))
             {
                 controller.setImeStatus(processName, true);
             }
-            else if ("false".Equals(imeOn.ToString()))
+            else if ("false".Equals(imeOn.ToString()) || "off".Equals(imeOn.ToString()))
             {
                 controller.setImeStatus(processName, false);
             }
             else
             {
-                log.Info("unknown imeOn option received. skip imeOn = [" + message + "].");
+                log.Info("unknown imeOn option received. skip imeOn = [" + imeOn.ToString() + "].");
             }
 
             if (ImemodeHiragana.Equals(imemode.ToString()))
