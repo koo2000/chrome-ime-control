@@ -36,11 +36,11 @@ namespace NativeImeControl
 
             if ("on".Equals(imeMode.ToString()))
             {
-                controller.setImeActiveStatus(processName, true);
+                controller.setImeStatus(processName, true);
             }
             else if ("off".Equals(imeMode.ToString()))
             {
-                controller.setImeActiveStatus(processName, false);
+                controller.setImeStatus(processName, false);
             }
             else
             {
