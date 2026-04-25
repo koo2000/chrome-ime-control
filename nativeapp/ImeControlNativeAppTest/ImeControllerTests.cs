@@ -31,7 +31,7 @@ namespace Tests
         {
             ImeController controller = new ImeController();
 
-            int mode = ImeController.IME_CMODE_JAPANESE |  ImeController.IME_CMODE_FULLSHAPE;
+            int mode = ImeController.ImeModeHiragana;
             controller.setImeStatus("msedge", true, mode);
         }
 
@@ -40,7 +40,7 @@ namespace Tests
         {
             ImeController controller = new ImeController();
 
-            int mode = ImeController.IME_CMODE_JAPANESE | ImeController.IME_CMODE_KATAKANA| ImeController.IME_CMODE_FULLSHAPE;
+            int mode = ImeController.ImeModeFullKatakana;
             controller.setImeStatus("msedge", true, mode);
         }
 
@@ -49,7 +49,7 @@ namespace Tests
         {
             ImeController controller = new ImeController();
 
-            int mode = ImeController.IME_CMODE_JAPANESE | ImeController.IME_CMODE_KATAKANA;
+            int mode = ImeController.ImeModeHalfKatakana;
             controller.setImeStatus("msedge", true, mode);
         }
 
@@ -77,7 +77,7 @@ namespace Tests
         {
             ImeController controller = new ImeController();
 
-            int mode = ImeController.IME_CMODE_JAPANESE | ImeController.IME_CMODE_KATAKANA;
+            int mode = ImeController.ImeModeHalfKatakana;
             controller.setImeStatus("chrome", true, mode);
         }
 

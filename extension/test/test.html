@@ -5,28 +5,32 @@
     </script>
 
 </head>
-<input type="text" data-imemode="on"> <br>
-<input type="text" data-imemode="off"> <br>
-
+<table>
+    <tr><td>imeOn true </td><td><input type="text" data-imeOn="true"> </td></tr>
+    <tr><td>imeOn false</td><td><input type="text" data-imeOn="false"> </td></tr>
+    <tr><td>imemode imeOn</td><td><input type="text" data-imemode="imeOn"> </td></tr>
+    <tr><td>imemode imeOff</td><td><input type="text" data-imemode="imeOff"> </td></tr>
+    <tr><td>imemode hiragana</td><td><input type="text" data-imemode="hiragana"> </td></tr>
+    <tr><td>imemode katakana</td><td><input type="text" data-imemode="katakana"> </td></tr>
+    <tr><td>imemode hankakukana</td><td><input type="text" data-imemode="hankakukana"> </td></tr>
+</table>
 <footer>
-    <script >
+    <script >// 適切なイベントリスナーを追加
+
         document
-            .querySelectorAll('input')
+            .querySelectorAll('[data-imemode]')
             .forEach(e => {
-                var imemode = e.dataset['imemode']
-                if (imemode === "on") {
-                    e.addEventListener("focus", (e) => {
-                        console.log("test.html: ime mode on");
-                        var event = new CustomEvent("imeOn");
-                        window.dispatchEvent(event);
+                var localImemode = e.dataset['imemode']
+                e.addEventListener("focus", (e) => {
+                    console.log("test.html: imemode [" + localImemode + "]");
+                    
+                    const event = new CustomEvent("imemode", {
+                        detail: { imemode: localImemode },
                     });
-                } else if (imemode === "off") {
-                    e.addEventListener("focus", (e) => {
-                        console.log("test.html: ime mode off");
-                        var event = new CustomEvent("imeOff");
-                        window.dispatchEvent(event);
-                    });
-                }
+                    window.dispatchEvent(event);
+
+                });
+
             });
 </script>
 </footer>

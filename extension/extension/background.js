@@ -7,14 +7,21 @@ class ImeControlConnection {
     this.port = null;
     // 画面からメッセージを受け取ってネイティブに渡す
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+      var imemode = message.imemode;
       if (this.port == null) {
         this.reconnect();
       }
-      if ("imeOn" === message) {
+      if ("imeOn" === imemode) {
         this.port.postMessage({ "imemode": "on", "agent" : agent });
-      } else if ("imeOff" === message) {
+      } else if ("imeOff" === imemode) {
         this.port.postMessage({ "imemode": "off", "agent" : agent  });
-      }
+      } else if ("hiragana" === imemode) {
+        this.port.postMessage({ "imemode": "hiragana", "agent" : agent  });
+      } else if ("katakana" === imemode) {
+        this.port.postMessage({ "imemode": "katakana", "agent" : agent  });
+      } else if ("hankakukana" === imemode) {
+        this.port.postMessage({ "imemode": "hankakukana", "agent" : agent  });
+      } 
       sendResponse("request processed");
     });
 

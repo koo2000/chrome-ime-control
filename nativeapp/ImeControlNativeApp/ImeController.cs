@@ -29,17 +29,22 @@ namespace ImeControl
         private const int IMC_SETOPENSTATUS = 0x0006;
         // The following constants can be found at the URL below.
         // https://github.com/xtuml/packaging/blob/master/features/org.xtuml.bp.MinGW/win32.all/MinGW/include/imm.h
-        public static int IME_CMODE_NATIVE = 1;
-        public static int IME_CMODE_CHINESE = IME_CMODE_NATIVE;
-        public static int IME_CMODE_HANGEUL = IME_CMODE_NATIVE;
-        public static int IME_CMODE_HANGUL = IME_CMODE_NATIVE;
-        public static int IME_CMODE_JAPANESE = IME_CMODE_NATIVE;
-        public static int IME_CMODE_KATAKANA = 2;
-        public static int IME_CMODE_LANGUAGE = 3;
-        public static int IME_CMODE_FULLSHAPE = 8;
-        public static int IME_CMODE_ROMAN = 16;
-        public static int IME_CMODE_CHARCODE = 32;
-        public static int IME_CMODE_HANJACONVERT = 64;
+        public const int IME_CMODE_NATIVE = 1;
+        public const int IME_CMODE_CHINESE = IME_CMODE_NATIVE;
+        public const int IME_CMODE_HANGEUL = IME_CMODE_NATIVE;
+        public const int IME_CMODE_HANGUL = IME_CMODE_NATIVE;
+        public const int IME_CMODE_JAPANESE = IME_CMODE_NATIVE;
+        public const int IME_CMODE_KATAKANA = 2;
+        public const int IME_CMODE_LANGUAGE = 3;
+        public const int IME_CMODE_FULLSHAPE = 8;
+        public const int IME_CMODE_ROMAN = 16;
+        public const int IME_CMODE_CHARCODE = 32;
+        public const int IME_CMODE_HANJACONVERT = 64;
+
+        // The following constants japanese setting.
+        public const int ImeModeHiragana = IME_CMODE_JAPANESE |  IME_CMODE_FULLSHAPE;
+        public const int ImeModeFullKatakana = IME_CMODE_JAPANESE | IME_CMODE_KATAKANA | IME_CMODE_FULLSHAPE;
+        public const int ImeModeHalfKatakana = IME_CMODE_JAPANESE | IME_CMODE_KATAKANA;
 
         public void setImeStatus(String processName, Boolean imeOn,int imeMode = -1)
         {
