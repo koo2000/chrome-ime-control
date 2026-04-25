@@ -1,7 +1,7 @@
 
 namespace Tests
 {
-
+    using System.Data;
     using ImeControl;
 
     public class ImeControllerTests
@@ -13,7 +13,7 @@ namespace Tests
         {
             ImeController controller = new ImeController();
 
-            controller.setImeActiveStatus("msedge", false);
+            controller.setImeStatus("msedge", false);
 
         }
 
@@ -22,8 +22,35 @@ namespace Tests
         {
             ImeController controller = new ImeController();
 
-            controller.setImeActiveStatus("msedge", true);
+            controller.setImeStatus("msedge", true);
 
+        }
+
+        [Test]
+        public void testImeFullHiraganaOnEdge()
+        {
+            ImeController controller = new ImeController();
+
+            int mode = ImeController.ImeModeHiragana;
+            controller.setImeStatus("msedge", true, mode);
+        }
+
+        [Test]
+        public void testImeFullKatakanaOnEdge()
+        {
+            ImeController controller = new ImeController();
+
+            int mode = ImeController.ImeModeFullKatakana;
+            controller.setImeStatus("msedge", true, mode);
+        }
+
+        [Test]
+        public void testImeHankakuKanaOnEdge()
+        {
+            ImeController controller = new ImeController();
+
+            int mode = ImeController.ImeModeHalfKatakana;
+            controller.setImeStatus("msedge", true, mode);
         }
 
         [Test]
@@ -31,7 +58,7 @@ namespace Tests
         {
             ImeController controller = new ImeController();
 
-            controller.setImeActiveStatus("chrome", false);
+            controller.setImeStatus("chrome", false);
 
         }
 
@@ -40,8 +67,19 @@ namespace Tests
         {
             ImeController controller = new ImeController();
 
-            controller.setImeActiveStatus("chrome", true);
+            controller.setImeStatus("chrome", true);
 
         }
+
+        
+        [Test]
+        public void testImeHankakuKanaOnChrome()
+        {
+            ImeController controller = new ImeController();
+
+            int mode = ImeController.ImeModeHalfKatakana;
+            controller.setImeStatus("chrome", true, mode);
+        }
+
     }
 }

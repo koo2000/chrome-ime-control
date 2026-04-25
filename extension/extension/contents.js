@@ -13,5 +13,15 @@ window.addEventListener("imeOff", (e) => {
         console.log("imeOn message processed");
     });
 });
+window.addEventListener("imemode", (e) => {
+    console.log("contents.js: call ime on");
+    console.log("contents.js: e = [" + JSON.stringify(e) + "]");
+    console.log("contents.js: e.detail = [" + JSON.stringify(e.detail) + "]");
+
+    chrome.runtime.sendMessage({imemode : e.detail.imemode, imeOn : e.detail.imeOn }, (response) => {
+        console.log("imemode message processed");
+    });
+});
 
 console.log("contents js initialized");
+window.addEventListener("animalfound", (e) => console.log("animal", e.detail.name));
